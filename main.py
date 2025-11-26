@@ -43,18 +43,14 @@ def update_mogura():
         game["my"] = random.randint(0, canvas.height - WIDTH)
 
 def update_screen():
-    """ゲーム画面の更新処理"""
+    """ゲーム画面の更新処理"""  # --- (*11)
     # 画面をクリア
     context.clearRect(0, 0, canvas.width, canvas.height)
-    # 背景画像を描画 --- (*1)
-    hatake_img = document.getElementById("hatake_img")
-    context.drawImage(hatake_img, 0, 0, canvas.width, canvas.height)
-    # モグラを描画 --- (*2)
+    # モグラを描画 --- (*12)
     if not game["hide"]:
-        mogura_img = document.getElementById("mogura_img")
-        context.drawImage(mogura_img,
-            game["mx"], game["my"], WIDTH, WIDTH)
-    # スコアを更新
+        context.fillStyle = "brown"
+        context.fillRect(game["mx"], game["my"], WIDTH, WIDTH)
+    # スコアを更新 --- (*13)
     info.innerText = (f"スコア: {game['score']}点 /"
                       f"残り時間: {game['turns']}")
 
